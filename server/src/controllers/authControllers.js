@@ -143,4 +143,11 @@ const logout = async (req, res) => {
   }
 };
 
-export { register, login, logout };
+function getAuthStatus(req, res) {
+  return res.status(200).json({
+    success: true,
+    message: "User is Authenticated",
+  });
+}
+
+export { register, login, logout, getAuthStatus };
