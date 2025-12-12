@@ -71,7 +71,7 @@ const login = async (req, res) => {
   try {
     // 2. Fetch the user
     const [rows] = await db.query(
-      "SELECT id, email, password FROM users WHERE email = ?",
+      "SELECT id, email, password, fullName FROM users WHERE email = ?",
       [email]
     );
     const user = rows[0];
@@ -89,7 +89,7 @@ const login = async (req, res) => {
       //401 Unauthorized
       return res
         .status(401)
-        .json({ success: false, message: "Invalid password." });
+        .json({ success: false, message: "Incorrect password." });
     }
 
     // Ensure the JWT_SECRET is available in our .env
@@ -116,7 +116,7 @@ const login = async (req, res) => {
     // 7. Success Response
     res.status(200).json({
       success: true,
-      message: "Login successful.",
+      message: `Login successful. Welcome back ${user.fullName}`,
       user: { id: user.id, email: user.email },
     });
   } catch (err) {
