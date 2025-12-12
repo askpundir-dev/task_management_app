@@ -1,0 +1,38 @@
+.login-form {
+  width: clamp(370px, 100%, 450px);
+  font-family: "Poppins", sans-serif;
+}
+
+.login-form input:focus {
+  outline: 2px solid #150ed0;
+}
+
+/* .login-form input:invalid {
+  outline: 2px solid red;
+} */
+
+label:hover {
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: all 0s ease-in-out 9999s; /*This delays the browser autofill styles  */
+}
+
+/* this is another way for avoiding the autofill bg-color*/
+/* 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #1f2937 inset !important; 
+  -webkit-text-fill-color: white !important;
+} */
+
+button:disabled {
+  cursor: not-allowed;
+}
