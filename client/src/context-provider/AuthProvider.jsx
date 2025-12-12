@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
       const res = await api.get("/auth/status");
       setIsAuthenticated(res.data.success);
     } catch (err) {
-      alert(err.response?.data?.message || "User not Authenticated");
+      // alert(err.response?.data?.message || "User not Authenticated");
       setIsAuthenticated(false);
     } finally {
       setLoading(false);

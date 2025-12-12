@@ -4,7 +4,7 @@ import ProtectedRoute from "./routeComponents/ProtectedRoute";
 import PublicRoute from "./routeComponents/PublicRoute";
 import Login from "./pages/login";
 import Register from "./pages/Register";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
