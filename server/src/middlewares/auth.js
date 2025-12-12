@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 export const auth = (req, res, next) => {
   try {
     const token = req.cookies?.token; // Using optional chaining for safety
-    console.log(token);
+    console.log("token:",token);
 
     if (!token) {
       return res.status(401).json({
