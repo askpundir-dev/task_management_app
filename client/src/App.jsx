@@ -10,7 +10,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/login"
           element={
@@ -25,14 +32,6 @@ function App() {
             <PublicRoute>
               <Register />
             </PublicRoute>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
           }
         />
       </Routes>
