@@ -6,7 +6,7 @@ const PublicRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
   if (loading) return <Loading />;
 
-  return isAuthenticated ? <Navigate to="/home" /> : children;
+  return isAuthenticated ? <Navigate to="/" /> : children;
 };
 
 export default PublicRoute;
