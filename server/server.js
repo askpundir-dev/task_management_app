@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 4000;
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:4173",
-  "https://taskmanagementappv1.netlify.app/",
+  "https://taskmanagementappv1.netlify.app",
 ];
 
 app.use(express.json());
