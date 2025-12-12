@@ -64,7 +64,7 @@ task_management_app/
 
 ## 🧩 API Endpoints
 
-- Auth Routes (/api/auth)
+- Auth Routes (`/api/auth`)
 
 | Method | Endpoint    | Description       | Protected |
 | ------ | ----------- | ----------------- | --------- |
@@ -72,3 +72,20 @@ task_management_app/
 | POST   | `/login`    | Login user        | ❌        |
 | GET    | `/logout`   | Logout user       | ✔️        |
 | GET    | `/status`   | Get auth status   | ✔️        |
+
+`All auth routes use rate limiter`
+
+- Example:
+
+```js
+app.use("/api/auth", apiLimiter, authRouter);
+```
+
+- Task Routes (`/api/tasks`)
+
+| Method | Endpoint      | Description   | Protected |
+| ------ | ------------- | ------------- | --------- |
+| POST   | `/create`     | Create a task | ✔️        |
+| GET    | `/`           | Get all tasks | ✔️        |
+| PUT    | `/update/:id` | Update a task | ✔️        |
+| DELETE | `/delete/:id` | Delete a task | ✔️        |
