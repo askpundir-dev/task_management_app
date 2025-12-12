@@ -3,6 +3,8 @@
 **A full-stack Task management application built with Node.js, Express, MySQL2, React, Vite, and TailwindCSS.**
 **`Features authentication, CRUD operations for tasks, and rate-limiting for security.`**
 
+## [Live Demo](!https://taskmanagementappv1.netlify.app)
+
 ## 🚀 Features
 
 1. 🔐 Authentication System
