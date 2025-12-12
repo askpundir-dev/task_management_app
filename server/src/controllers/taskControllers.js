@@ -5,6 +5,12 @@ import { checkTaskOwnership } from "../utils/checkTaskOwnership.js";
  * Creates a new task for the authenticated user.
  */
 export const createTask = async (req, res) => {
+  if (!req.body || !Object.keys(req.body).length) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Request Body missing." });
+  }
+
   const { title, description } = req.body;
 
   if (!title || !description) {
@@ -43,12 +49,12 @@ export const createTask = async (req, res) => {
 
 export const getAllTasks = async (req, res) => {
   try {
-    const [todos] = await db.query(
+    const [tasks] = await db.query(
       "SELECT id, title, description, createdAt FROM todos WHERE userId = ?",
       [req.userId]
     );
 
-    res.status(200).json({ success: true, count: todos.length, todos });
+    res.status(200).json({ success: true, count: tasks.length, tasks });
   } catch (err) {
     console.error("Error fetching tasks:", err);
     res
