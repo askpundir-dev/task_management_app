@@ -9,7 +9,11 @@ dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT || 4000;
-const allowedOrigins = ["http://localhost:5173", "http://localhost:4173"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:4173",
+  "https://taskmanagementappv1.netlify.app/",
+];
 
 app.use(express.json());
 app.use(cookieParser());
