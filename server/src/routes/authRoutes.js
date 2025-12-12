@@ -6,12 +6,13 @@ import {
   getAuthStatus,
 } from "../controllers/authControllers.js";
 import { auth } from "../middlewares/auth.js";
+import { loginLimiter, registerLimiter } from "../middlewares/authLimiters.js";
 
 const router = express.Router();
 
-router.post("/register", register);
+router.post("/register", registerLimiter, register);
 
-router.post("/login", login);
+router.post("/login", loginLimiter, login);
 
 router.get("/logout", auth, logout);
 

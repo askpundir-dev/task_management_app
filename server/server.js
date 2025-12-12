@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import authRouter from "./src/routes/authRoutes.js";
 import taskRouter from "./src/routes/taskRoutes.js";
 import dotenv from "dotenv";
+import rateLimit from "express-rate-limit";
 
 dotenv.config();
 const app = express();
@@ -14,6 +15,15 @@ const allowedOrigins = [
   "http://localhost:4173",
   "https://taskmanagementappv1.netlify.app",
 ];
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 1500,
+  message: {
+    success: false,
+    message:
+      "We have received too many requests from this IP. Please try again after some time.",
+  },
+});
 
 app.use(express.json());
 app.use(cookieParser());
@@ -32,8 +42,8 @@ app.use(
   })
 );
 
-app.use("/api/auth", authRouter);
-app.use("/api/tasks", taskRouter);
+app.use("/api/auth", apiLimiter, authRouter);
+app.use("/api/tasks", apiLimiter, taskRouter);
 
 app.listen(process.env.PORT, () =>
   console.log(`Server running at: http://localhost:${PORT}`)
